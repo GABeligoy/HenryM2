@@ -51,14 +51,15 @@ ToDo.prototype.completeToDo=function(){
 
 function buildToDo(todo, index) {
   // Tu código acá:
-  let obj=new ToDo(todo)
+  
   let toDoShell=document.createElement("div")
-  toDoShell.className="toDoShell"
+  toDoShell.setAttribute("class", "toDoShell")            //className="toDoShell" yo lo hice así
   let toDoText=document.createElement("span")
-  toDoText.innerHTML=this.description
-  toDoText.id=index
-  if(obj.complete){
-    toDoText.className="completeText"
+  toDoText.innerHTML=todo.description                     //this.description
+  toDoText.setAttribute("id",index)
+  toDoText.addEventListener("click",completeToDo)
+  if(todo.complete){
+    toDoText.setAttribute("class","completeText")
   }
   toDoShell.appendChild(toDoText)
   return toDoShell
@@ -71,8 +72,7 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // Tu código acá:
-  let resul=toDos.map(buildToDo)
-  toDoText.addEventListener("click",completeToDo)
+  let resul=toDos.map((todo, index)=>buildToDo(todo, index))
   return resul
 }
 
@@ -91,7 +91,7 @@ function displayToDos() {
   toDoContainer.innerHTML=""
   let resul=buildToDos(toDoItems)
   resul.forEach(element => {
-    toDoContainer.createElement=(element)
+    toDoContainer.appendChild=(element)
   });
 }
 
@@ -108,8 +108,9 @@ function addToDo() {
   // Tu código acá:
   let obj=new ToDo(document.getElementById("toDoInput").value)
   toDoItems.push(obj)
-  toDoInput.value.innerHTML=""
-
+  let inp=document.getElementById("toDoInput")
+  inp.value=""
+  displayToDos()
 }
 
 // Agregar un 'Event Listener' para que cada vez que el botón 'AGREGAR' sea clickeado
@@ -137,7 +138,8 @@ function completeToDo(event) {
   // DESCOMENTAR LA SIGUIENTE LINEA
   const index = event.target.id;
   // Tu código acá:
-  completeToDo(index)
+  toDoItems[index].completeToDo()
+  displayToDos()
 }
 
 // Una vez que llegaste a este punto verificá que todos los tests pasen
