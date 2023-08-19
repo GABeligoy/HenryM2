@@ -1,7 +1,7 @@
 
 
   // our EventEmitter constructor function
-  function EventEmitter() {
+   function EventEmitter() {
     this.subscribers = {};
   }
 

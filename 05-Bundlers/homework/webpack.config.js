@@ -1,4 +1,5 @@
 module.exports = {
+   //mode:"development",
     entry: './browser/app.js', // el punto de arranque de nuestro programa
     output: {
        path: __dirname + '/browser', // el path absoluto para el directorio donde queremos que el output sea colocado
