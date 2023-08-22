@@ -17,18 +17,23 @@ function App() {
       .then((response)=>response.json())
       .then((data)=>{
          if(data.name){
-            setCharacters((oldChars)=>[...oldChars, data])
-            //setCharacters([...characters,data])
+            //setCharacters((oldChars)=>[...oldChars,data])
+            setCharacters([...characters,data])
          }else{
             window.alert("No hay personjes con ese ID")
          }
       })
    }
+
+   const onClose=(id)=>{
+      setCharacters(characters.filter(elem=>elem.id!==parseInt(id)))
+     //setCharacters(borrar)
+   }
    
    return (
       <div className='App'>
          <div><Nav onSearch={onSearch} /></div>
-         <div><Cards characters={characters} /></div>
+         <div><Cards characters={characters} onClose={onClose} /></div>
          {/* <div><Card
             id={Rick.id}
             name={Rick.name}
