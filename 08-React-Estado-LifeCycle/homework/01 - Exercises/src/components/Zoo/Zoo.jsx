@@ -7,11 +7,18 @@ import Species from "../Species/Species";
 
 export default function Zoo() {
   /* Escribe acá tu código */
-
+  const [zoo, setZoo]=React.useState({zooName:"",animals:[],species:[],allAnimals:[]})
+  
+  const handleInputChange=function(event){
+    setZoo({...zoo,zooName:event.target.value})
+  }
 
   return (
     <div>
-      <h1>-</h1>
+      <label>Zoo Name: </label>
+      <input value={zoo.zooName} onChange={handleInputChange}/>
+      <h1>{zoo.zooName}</h1>
+
     </div>
   );
 }
