@@ -21,7 +21,7 @@ var selectorTypeMatcher = function (selector) {
   // tu código aquí
   if(selector[0]==="#")return "id"
   if(selector[0]===".")return "class"
-  if(selector.includes("."))return "tag.class"
+  if(selector.includes("."))return "tag.class"//la forma correcta es con split
   return "tag"
 };
 
@@ -48,7 +48,7 @@ var matchFunctionMaker = function (selector) {
       const [tagName, className]=selector.split(".")
       return matchFunctionMaker(tagName)(element)&&matchFunctionMaker(`.${className}`)(element)}
   } else if (selectorType === "tag") {
-    matchFunction=(element)=>`${element.tagName}`===selector.toUpperCase()
+    matchFunction=(element)=>element.tagName===selector.toUpperCase()
   }
   return matchFunction;
 };

@@ -13,14 +13,14 @@ $("#boton").on("click", function(){
     })
 })
 $("#search").on("click",function(){
-    let inp=document.getElementById("input")
-    let valor=inp.value
+    let inp=document.getElementById("input")  //$("#input").val()
+    let valor=inp.value                      //
     $.ajax({
         type: "GET", 
         url:  "http://localhost:5000/amigos/"+valor,
         success: (data)=>{
-            let info=`Amigos: ${data.name}`
-            $("#amigo").text(info)
+            let info=`Amigos: ${data.name}`   //$("#amigo").html(`Nombre: ${data.name}`)
+            $("#amigo").text(info)           //
             inp.value=""
             
         }
@@ -31,9 +31,9 @@ $("#delete").on("click", function(){
     let valor=inp.value
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:5000/amigos/"+valor,
+        url: "http://localhost:5000/amigos/"+valor, //${idJ}
         success: $("#success").text("Tu amigo borrado ha sido borrado con éxito")
     })
-    inp.value=""
+    inp.value=""                     
     
 })

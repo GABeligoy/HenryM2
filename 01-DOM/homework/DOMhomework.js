@@ -55,7 +55,7 @@ function buildToDo(todo, index) {
   let toDoShell=document.createElement("div")
   toDoShell.setAttribute("class", "toDoShell")            //className="toDoShell" yo lo hice así
   let toDoText=document.createElement("span")
-  toDoText.innerHTML=todo.description                     //this.description
+  toDoText.innerHTML=todo.description                     //this.description yo lo hice así
   toDoText.setAttribute("id",index)
   toDoText.addEventListener("click",completeToDo)
   if(todo.complete){
@@ -72,7 +72,7 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // Tu código acá:
-  let resul=toDos.map((todo, index)=>buildToDo(todo, index))
+  let resul=toDos.map((elem, index)=>buildToDo(elem, index))
   return resul
 }
 
@@ -91,7 +91,7 @@ function displayToDos() {
   toDoContainer.innerHTML=""
   let resul=buildToDos(toDoItems)
   resul.forEach(element => {
-    toDoContainer.appendChild=(element)
+    toDoContainer.appendChild(element)
   });
 }
 
